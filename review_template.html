@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; media-src 'self' blob: file:; img-src data:">
+<title>Clip review</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #f6f6f3; --panel: #ffffff; --text: #1d1d1b; --muted: #5b5b57; --line: #d9d9d2;
+  --accent: #0b6e69; --accent-text: #ffffff; --clip: #e0f0ee; --clip-strong: #0b6e69;
+  --tick: #b3541e; --warn-bg: #fff4d6; --warn-text: #5a4300; --focus: #1a56db;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141414; --panel: #1f1f1e; --text: #ececea; --muted: #a8a8a2; --line: #3a3a37;
+    --accent: #4fc2ba; --accent-text: #0d1b1a; --clip: #1d3533; --clip-strong: #4fc2ba;
+    --tick: #f08a4b; --warn-bg: #3b3115; --warn-text: #f5dd9a; --focus: #8ab4ff;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141414; --panel: #1f1f1e; --text: #ececea; --muted: #a8a8a2; --line: #3a3a37;
+  --accent: #4fc2ba; --accent-text: #0d1b1a; --clip: #1d3533; --clip-strong: #4fc2ba;
+  --tick: #f08a4b; --warn-bg: #3b3115; --warn-text: #f5dd9a; --focus: #8ab4ff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 980px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.4rem; margin: 0; }
+h2 { font-size: 1.1rem; margin: 0 0 10px; }
+h3 { font-size: 1rem; margin: 0; }
+.section-h { margin: 22px 4px 0; font-size: 1.2rem; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin: 14px 0; }
+.top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.muted { color: var(--muted); font-size: .9rem; }
+.banner { background: var(--tick); color: #fff; font-weight: 700; text-align: center; padding: 8px; letter-spacing: .04em; }
+.note { background: var(--warn-bg); color: var(--warn-text); border-radius: 8px; padding: 10px 12px; margin: 12px 0 0; }
+label { font-weight: 600; display: block; margin: 10px 0 4px; }
+input[type=text], textarea { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+textarea { resize: vertical; min-height: 4.5em; }
+textarea.one-line { min-height: 0; }
+button, .filebtn { font: inherit; cursor: pointer; border-radius: 6px; padding: 7px 12px;
+  border: 1px solid var(--accent); background: var(--accent); color: var(--accent-text); }
+button.secondary, .filebtn { background: transparent; color: var(--text); border-color: var(--line); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+audio { width: 100%; margin-top: 8px; }
+.filebtn input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.filebtn:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* timeline */
+.timeline { position: relative; height: 46px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; margin-top: 6px; }
+.tl-bar { position: absolute; top: 6px; height: 34px; min-width: 22px; padding: 0; border-radius: 4px;
+  background: var(--clip-strong); border: 0; color: var(--accent-text); font-weight: 700; font-size: .8rem;
+  transform: translateX(0); }
+.title-opts { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 4px; font-size: .85rem; }
+.chip { font: inherit; font-size: .85rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg); color: inherit; cursor: pointer; text-align: left; }
+.tl-bar.row0, .tl-bar.row1 { height: 16px; font-size: .7rem; line-height: 16px; }
+.tl-bar.row1 { top: 24px; }
+.tl-bar:hover { filter: brightness(1.1); }
+.tl-tick { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--tick); pointer-events: none; }
+.tl-axis { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); margin-top: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .85rem; color: var(--muted); margin-top: 6px; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+
+/* clip cards */
+.card { border-left: 5px solid var(--clip-strong); scroll-margin-top: 12px; }
+.card.approved { box-shadow: 0 0 0 2px var(--clip-strong) inset; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .9rem; color: var(--muted); margin: 4px 0 8px; }
+.why { margin: 6px 0; }
+.excerpt { background: var(--bg); border-radius: 6px; padding: 8px 10px; margin: 8px 0; font-size: .95rem; overflow-wrap: anywhere; }
+details summary { cursor: pointer; color: var(--muted); font-size: .9rem; }
+.approve { display: inline-flex; gap: 6px; align-items: center; font-weight: 600; margin: 0; }
+.approve input { width: 20px; height: 20px; }
+
+/* transcript */
+.tr { list-style: none; margin: 0; padding: 0; max-height: 70vh; overflow: auto; }
+.tr li { display: flex; gap: 10px; padding: 4px 6px; border-radius: 4px; align-items: baseline; }
+.tr li.inclip { background: var(--clip); }
+.tr li.topic { border-top: 2px dashed var(--tick); margin-top: 6px; padding-top: 8px; }
+.tr .ts { flex: 0 0 auto; padding: 1px 6px; font-variant-numeric: tabular-nums; font-size: .85rem;
+  background: transparent; color: var(--accent); border: 1px solid var(--line); }
+.tr li.now { outline: 2px solid var(--focus); }
+.tr .txt { overflow-wrap: anywhere; }
+.tag { font-size: .75rem; font-weight: 700; color: var(--clip-strong); white-space: nowrap; }
+.status { min-height: 1.5em; font-size: .9rem; color: var(--muted); }
+@media (max-width: 600px) {
+  main { padding: 10px; }
+  .panel { padding: 12px; }
+  .tr li { flex-direction: column; gap: 2px; }
+}
+</style>
+</head>
+<body>
+<div id="banner" class="banner" hidden>SAMPLE: fictional text</div>
+<main>
+  <header class="panel">
+    <div class="top">
+      <h1>Podcast clip review</h1>
+      <button type="button" class="secondary" id="theme">Toggle light/dark</button>
+    </div>
+    <p class="muted" id="meta"></p>
+    <p class="note" role="note"><strong>This page only suggests.</strong> Nothing is edited, posted or published. A human approves every clip.</p>
+    <div id="warnings"></div>
+  </header>
+
+  <section class="panel" aria-labelledby="ep-h">
+    <h2 id="ep-h">Episode drafts</h2>
+    <label for="title">Draft title (editable)</label>
+    <textarea id="title" rows="1" class="one-line"></textarea>
+    <div id="title-opts" class="title-opts"></div>
+    <label for="summary">Draft summary (editable)</label>
+    <textarea id="summary" rows="4"></textarea>
+    <p class="muted">Drafts are sentences copied word for word from the transcript. Polish them before use.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="au-h">
+    <h2 id="au-h">Audio</h2>
+    <p class="muted" id="audio-msg"></p>
+    <div class="row">
+      <label class="filebtn">Load episode audio from this computer<input type="file" id="file" accept="audio/*"></label>
+    </div>
+    <audio id="audio" controls preload="metadata"></audio>
+  </section>
+
+  <section class="panel" aria-labelledby="tl-h">
+    <h2 id="tl-h">Timeline</h2>
+    <div class="timeline" id="timeline" role="group" aria-label="Episode timeline with suggested clips"></div>
+    <div class="tl-axis"><span>0:00</span><span id="tl-end"></span></div>
+    <div class="legend"><span><span class="sw" style="background:var(--clip-strong)"></span>Suggested clip (click to jump)</span>
+      <span><span class="sw" style="background:var(--tick);width:3px"></span>Topic change</span></div>
+  </section>
+
+  <section aria-labelledby="clips-h">
+    <h2 id="clips-h" class="section-h">Suggested clips</h2>
+    <div id="cards"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="ex-h">
+    <h2 id="ex-h">Hand off to the editor</h2>
+    <p class="muted">Only clips ticked "Approve for editor" are included, with your edited captions.</p>
+    <div class="row">
+      <button type="button" id="copy">Copy approved clips</button>
+      <button type="button" id="download">Download approved.json</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="panel" aria-labelledby="tr-h">
+    <h2 id="tr-h">Full transcript</h2>
+    <p class="muted">Highlighted lines are inside a suggested clip. Dashed lines mark topic changes. Click a timestamp to jump the audio there.</p>
+    <ol class="tr" id="transcript"></ol>
+  </section>
+</main>
+<script>
+"use strict";
+const DATA = /*__DATA__*/null;
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, props, ...kids) => {
+    const n = document.createElement(tag);
+    if (props) for (const [k, v] of Object.entries(props)) {
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v);
+    }
+    for (const kid of kids) if (kid != null) n.append(kid);
+    return n;
+  };
+  const fmt = (t) => {
+    t = Math.max(0, Math.round(t)); const h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60;
+    return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(s).padStart(2, "0");
+  };
+  const status = (msg) => { $("status").textContent = msg; };
+  if (!DATA) { document.body.textContent = "No data embedded. Generate this page with clip_suggester.py."; return; }
+
+  // theme toggle (remembers nothing; no storage needed)
+  $("theme").addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+  });
+
+  $("banner").hidden = !DATA.sample;
+  $("meta").textContent = [
+    "Source: " + DATA.source, DATA.guest ? "Guest: " + DATA.guest : null,
+    "Length: " + fmt(DATA.duration), DATA.model ? "Transcribed with " + DATA.model : "Transcript supplied as JSON",
+    "Generated " + DATA.generated_at].filter(Boolean).join(" · ");
+  for (const w of DATA.warnings || []) $("warnings").append(el("p", { class: "note", text: "Warning: " + w }));
+  const autosize = (ta) => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; };
+  document.addEventListener("input", (e) => { if (e.target.tagName === "TEXTAREA") autosize(e.target); });
+  addEventListener("resize", () => document.querySelectorAll("textarea").forEach(autosize));
+  $("title").value = DATA.title;
+  const opts = DATA.title_options || [];
+  if (opts.length > 1) {
+    $("title-opts").append(el("span", { class: "muted", text: "Other title ideas: " }));
+    for (const t of opts) $("title-opts").append(el("button", { type: "button", class: "chip", text: t,
+      onclick: () => { $("title").value = t; autosize($("title")); } }));
+  }
+  $("summary").value = DATA.summary;
+
+  // audio
+  const audio = $("audio");
+  let hasAudio = false, stopAt = null;
+  const setAudioMsg = () => {
+    $("audio-msg").textContent = hasAudio
+      ? "Audio loaded. Use \"Play this clip\" on a card, or click a transcript timestamp."
+      : "No audio loaded" + (DATA.audio_src ? " (could not open " + DATA.audio_src + ")" : "") +
+        ". Load the episode file to enable playback.";
+    document.querySelectorAll("[data-needs-audio]").forEach((b) => { b.disabled = !hasAudio; });
+  };
+  audio.addEventListener("loadedmetadata", () => { hasAudio = true; setAudioMsg(); });
+  audio.addEventListener("error", () => { hasAudio = false; setAudioMsg(); });
+  audio.addEventListener("timeupdate", () => {
+    if (stopAt !== null && audio.currentTime >= stopAt) { audio.pause(); stopAt = null; }
+    highlightNow(audio.currentTime);
+  });
+  audio.addEventListener("seeking", () => { if (stopAt !== null && audio.currentTime < playFrom - 0.5) stopAt = null; });
+  let playFrom = 0;
+  const playRange = (start, end) => {
+    if (!hasAudio) { status("Load the episode audio first."); return; }
+    playFrom = start; stopAt = end; audio.currentTime = start; audio.play();
+  };
+  const seek = (t) => {
+    if (!hasAudio) { status("Load the episode audio to jump to " + fmt(t) + "."); return; }
+    stopAt = null; audio.currentTime = t; audio.play();
+  };
+  $("file").addEventListener("change", (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    audio.src = URL.createObjectURL(f); audio.load(); status("Loaded " + f.name + ".");
+  });
+  if (DATA.audio_src) audio.src = DATA.audio_src; else audio.removeAttribute("src");
+
+  // timeline
+  const total = Math.max(DATA.duration, 1);
+  const pct = (t) => (100 * t / total).toFixed(3) + "%";
+  $("tl-end").textContent = fmt(total);
+  for (const b of DATA.topic_changes) $("timeline").append(el("span", { class: "tl-tick", style: "left:" + pct(b), title: "Topic change at " + fmt(b) }));
+  for (const c of DATA.clips) {
+    $("timeline").append(el("button", {
+      type: "button", class: "tl-bar", style: "left:" + pct(c.start) + ";width:" + pct(c.end - c.start),
+      "aria-label": "Clip " + c.id + ", " + fmt(c.start) + " to " + fmt(c.end) + ". Jump to card.",
+      title: "Clip " + c.id + " · " + fmt(c.start) + "–" + fmt(c.end), text: String(c.id),
+      onclick: () => { const card = $("clip-" + c.id); card.scrollIntoView({ block: "start" }); card.focus({ preventScroll: true }); },
+    }));
+  }
+
+  // bars too close to read side by side (small screens) go on two rows
+  const layoutBars = () => {
+    const bars = [...document.querySelectorAll(".tl-bar")];
+    bars.forEach((b) => b.classList.remove("row0", "row1"));
+    const clash = bars.some((b, i) => i && b.offsetLeft < bars[i - 1].offsetLeft + bars[i - 1].offsetWidth + 2);
+    if (clash) bars.forEach((b, i) => b.classList.add(i % 2 ? "row1" : "row0"));
+  };
+  layoutBars();
+  addEventListener("resize", layoutBars);
+
+  // cards
+  const state = DATA.clips.map((c) => ({ approved: false, caption: c.caption }));
+  DATA.clips.forEach((c, i) => {
+    const capId = "cap-" + c.id, apId = "ap-" + c.id;
+    const card = el("article", { class: "panel card", id: "clip-" + c.id, tabindex: "-1", "aria-labelledby": "h-" + c.id },
+      el("h3", { id: "h-" + c.id, text: "Clip " + c.id + ". Start " + fmt(c.start) + ". End " + fmt(c.end) + "." }),
+      el("div", { class: "meta" },
+        el("span", { text: "Duration " + Math.round(c.duration) + "s" }),
+        el("span", { text: "Score " + c.score.toFixed(2) }),
+        c.signals.crosses_topic_change_at.length ? el("span", { text: "Crosses a topic change" }) : null),
+      el("p", { class: "why" }, el("strong", { text: "Why: " }), c.why),
+      el("label", { for: capId, text: "Draft caption (verbatim from transcript, editable)" }),
+      el("textarea", { id: capId, rows: "2", oninput: (e) => { state[i].caption = e.target.value; } }),
+      el("details", null, el("summary", { text: "Transcript excerpt" }), el("div", { class: "excerpt", text: c.excerpt })),
+      el("div", { class: "row" },
+        el("button", { type: "button", "data-needs-audio": "", onclick: () => playRange(c.start, c.end), text: "Play this clip" }),
+        el("label", { class: "approve", for: apId },
+          el("input", { type: "checkbox", id: apId, onchange: (e) => { state[i].approved = e.target.checked; card.classList.toggle("approved", e.target.checked); } }),
+          "Approve for editor")),
+    );
+    card.querySelector("textarea").value = c.caption;
+    card.querySelector("details").open = true;
+    $("cards").append(card);
+  });
+
+  // export
+  const approved = () => DATA.clips.map((c, i) => ({ c, s: state[i] })).filter((x) => x.s.approved).map(({ c, s }) => ({
+    id: c.id, start: c.start, end: c.end, start_label: fmt(c.start), end_label: fmt(c.end),
+    duration: c.duration, why: c.why, caption: s.caption, excerpt: c.excerpt }));
+  const asText = (list) => [
+    "Episode title (draft): " + $("title").value, "Summary (draft): " + $("summary").value, "",
+    ...list.map((a) => "Clip " + a.id + ". Start " + a.start_label + ". End " + a.end_label + ". Why: " + a.why + " Draft caption: " + a.caption),
+    "", "Suggestions approved by a human reviewer. Nothing has been edited, posted or published."].join("\n");
+  $("copy").addEventListener("click", async () => {
+    const list = approved();
+    if (!list.length) { status("No clips approved yet. Tick \"Approve for editor\" on at least one clip."); return; }
+    const text = asText(list);
+    try { await navigator.clipboard.writeText(text); }
+    catch (e) {
+      const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = text; document.body.append(ta);
+      ta.select(); const ok = document.execCommand("copy"); ta.remove();
+      if (!ok) { status("Copy was blocked by the browser. Use Download instead."); return; }
+    }
+    status("Copied " + list.length + " approved clip(s).");
+  });
+  $("download").addEventListener("click", () => {
+    const list = approved();
+    if (!list.length) { status("No clips approved yet. Tick \"Approve for editor\" on at least one clip."); return; }
+    const out = { source: DATA.source, sample: DATA.sample, title: $("title").value, summary: $("summary").value,
+      approved_clips: list, exported_at: new Date().toISOString(),
+      note: "Approved by a human reviewer. Nothing has been edited, posted or published." };
+    const a = el("a", { href: URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)], { type: "application/json" })), download: "approved.json" });
+    document.body.append(a); a.click(); a.remove();
+    status("Downloaded approved.json with " + list.length + " clip(s).");
+  });
+
+  // transcript
+  const clipOf = (s) => DATA.clips.find((c) => s.start < c.end - 0.01 && s.end > c.start + 0.01);
+  const rows = [];
+  let bi = 0;
+  for (const s of DATA.transcript) {
+    let topic = false;
+    while (bi < DATA.topic_changes.length && DATA.topic_changes[bi] <= s.start + 0.01) { topic = true; bi++; }
+    const c = clipOf(s);
+    const li = el("li", { class: (c ? "inclip " : "") + (topic ? "topic" : "") },
+      el("button", { type: "button", class: "ts", "aria-label": "Jump audio to " + fmt(s.start), onclick: () => seek(s.start), text: fmt(s.start) }),
+      el("span", { class: "txt" }, c ? el("span", { class: "tag", text: "Clip " + c.id + " · " }) : null, s.text));
+    if (topic) li.title = "Topic change";
+    rows.push({ s, li }); $("transcript").append(li);
+  }
+  let lastNow = null;
+  function highlightNow(t) {
+    const r = rows.find((x) => t >= x.s.start && t < x.s.end + 0.3);
+    if (r === lastNow) return;
+    if (lastNow) lastNow.li.classList.remove("now");
+    if (r) r.li.classList.add("now");
+    lastNow = r;
+  }
+  setAudioMsg();
+  document.querySelectorAll("textarea").forEach(autosize);
+})();
+</script>
+</body>
+</html>

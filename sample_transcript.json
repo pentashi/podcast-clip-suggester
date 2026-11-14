@@ -1,0 +1,427 @@
+[
+ {
+  "start": 1.0,
+  "end": 6.77,
+  "text": "Welcome back to Small Rooms, a podcast about people who build things in small spaces."
+ },
+ {
+  "start": 7.12,
+  "end": 11.74,
+  "text": "This episode is completely fictional and made up for a software demo."
+ },
+ {
+  "start": 12.09,
+  "end": 17.47,
+  "text": "My guest today is Rana Vell, who runs a pottery studio called Lantern Clay."
+ },
+ {
+  "start": 17.82,
+  "end": 20.51,
+  "text": "Rana, thanks for coming on the show."
+ },
+ {
+  "start": 20.86,
+  "end": 25.09,
+  "text": "Thank you for having me, I'm really happy to be here."
+ },
+ {
+  "start": 25.44,
+  "end": 28.13,
+  "text": "So let's start at the very beginning."
+ },
+ {
+  "start": 28.48,
+  "end": 32.33,
+  "text": "How did you end up making pottery for a living?"
+ },
+ {
+  "start": 32.68,
+  "end": 34.6,
+  "text": "Honestly, it started by accident."
+ },
+ {
+  "start": 34.95,
+  "end": 43.41,
+  "text": "I was working in an office job that I didn't love, and a friend dragged me to a pottery class one evening."
+ },
+ {
+  "start": 43.76,
+  "end": 49.91,
+  "text": "I remember the first time I put my hands on the wet clay on the wheel."
+ },
+ {
+  "start": 50.26,
+  "end": 54.11,
+  "text": "It collapsed into a mess, and everyone laughed, including me."
+ },
+ {
+  "start": 54.46,
+  "end": 59.84,
+  "text": "But something about the wheel felt calm in a way my office never did."
+ },
+ {
+  "start": 60.19,
+  "end": 63.27,
+  "text": "After that I went back every single week."
+ },
+ {
+  "start": 63.62,
+  "end": 72.08,
+  "text": "Within a year I had bought a second hand wheel and a tiny electric kiln and set them up in my garage."
+ },
+ {
+  "start": 72.43,
+  "end": 79.74,
+  "text": "The garage was so small that I had to move my car out every time I fired the kiln."
+ },
+ {
+  "start": 80.09,
+  "end": 84.32,
+  "text": "My neighbours thought I was running some kind of strange factory."
+ },
+ {
+  "start": 84.67,
+  "end": 90.82,
+  "text": "Um, you know, I sold my first bowls at a weekend market, like, for almost nothing."
+ },
+ {
+  "start": 91.17,
+  "end": 95.4,
+  "text": "And, uh, I basically gave half of them away to friends."
+ },
+ {
+  "start": 95.75,
+  "end": 98.83,
+  "text": "So when did it stop being a hobby?"
+ },
+ {
+  "start": 99.18,
+  "end": 101.1,
+  "text": "That's when the flood happened."
+ },
+ {
+  "start": 101.45,
+  "end": 107.99,
+  "text": "Three years ago a storm flooded the whole street, and the water came straight into the garage."
+ },
+ {
+  "start": 108.34,
+  "end": 114.49,
+  "text": "I lost everything in one night: the wheel, the kiln, the glazes, two hundred finished pieces."
+ },
+ {
+  "start": 114.84,
+  "end": 120.22,
+  "text": "I was terrified, and I sat on the steps and cried for an hour."
+ },
+ {
+  "start": 120.57,
+  "end": 127.11,
+  "text": "I thought it was over, and I honestly thought about going back to the office for good."
+ },
+ {
+  "start": 129.96,
+  "end": 132.65,
+  "text": "Then something happened that I never expected."
+ },
+ {
+  "start": 133.0,
+  "end": 138.0,
+  "text": "The next morning my students and neighbours showed up with buckets and mops."
+ },
+ {
+  "start": 138.35,
+  "end": 147.2,
+  "text": "A woman I had never met set up an online fundraiser, and in one week strangers raised enough to buy a new kiln."
+ },
+ {
+  "start": 147.55,
+  "end": 152.17,
+  "text": "That was the moment I realised this was not a hobby anymore."
+ },
+ {
+  "start": 152.52,
+  "end": 158.29,
+  "text": "People cared about the studio, and I owed it to them to take it seriously."
+ },
+ {
+  "start": 158.64,
+  "end": 166.72,
+  "text": "The lesson I took from the flood is simple: you are never as alone as you feel on the worst night."
+ },
+ {
+  "start": 167.07,
+  "end": 169.38,
+  "text": "Wow, that is a powerful story."
+ },
+ {
+  "start": 169.73,
+  "end": 172.81,
+  "text": "What did you do with that new kiln?"
+ },
+ {
+  "start": 173.16,
+  "end": 178.93,
+  "text": "I rented a small unit behind a bakery and turned it into a real studio."
+ },
+ {
+  "start": 179.28,
+  "end": 184.28,
+  "text": "It's warm in there all year because of the bakery ovens next door."
+ },
+ {
+  "start": 184.63,
+  "end": 189.25,
+  "text": "I started teaching evening classes for beginners, four students at a time."
+ },
+ {
+  "start": 189.6,
+  "end": 191.91,
+  "text": "Teaching changed everything for the business."
+ },
+ {
+  "start": 192.26,
+  "end": 197.26,
+  "text": "The classes paid the rent, and the students became my most loyal customers."
+ },
+ {
+  "start": 197.61,
+  "end": 201.46,
+  "text": "Some of them still come every Thursday, five years later."
+ },
+ {
+  "start": 201.81,
+  "end": 204.5,
+  "text": "And how did you build a team?"
+ },
+ {
+  "start": 204.85,
+  "end": 207.54,
+  "text": "Slowly, and with a lot of mistakes."
+ },
+ {
+  "start": 207.89,
+  "end": 213.66,
+  "text": "My first hire was an apprentice who had more talent than me but no patience."
+ },
+ {
+  "start": 214.01,
+  "end": 218.63,
+  "text": "We argued about glazes every day, and after six months he left."
+ },
+ {
+  "start": 218.98,
+  "end": 226.29,
+  "text": "I was angry for a while, but he taught me that I needed clear rules, not just good vibes."
+ },
+ {
+  "start": 226.64,
+  "end": 231.26,
+  "text": "Now every apprentice gets a written plan for their first ninety days."
+ },
+ {
+  "start": 231.61,
+  "end": 237.76,
+  "text": "They know what they will learn, what they will make, and how they will be paid."
+ },
+ {
+  "start": 238.11,
+  "end": 247.73,
+  "text": "Here's the thing nobody tells you about hiring: people don't leave because the work is hard, they leave because they don't know where they stand."
+ },
+ {
+  "start": 248.08,
+  "end": 250.0,
+  "text": "That's such a useful point."
+ },
+ {
+  "start": 250.35,
+  "end": 254.97,
+  "text": "Let's talk about money, because a lot of makers struggle with pricing."
+ },
+ {
+  "start": 255.32,
+  "end": 258.4,
+  "text": "How do you decide what a mug costs?"
+ },
+ {
+  "start": 258.75,
+  "end": 262.98,
+  "text": "For years I priced everything by guessing what people would pay."
+ },
+ {
+  "start": 263.33,
+  "end": 265.25,
+  "text": "That was my biggest mistake."
+ },
+ {
+  "start": 265.6,
+  "end": 271.75,
+  "text": "I was selling mugs for less than the clay, the glaze and the electricity cost me."
+ },
+ {
+  "start": 272.1,
+  "end": 279.02,
+  "text": "One winter my electricity bill was higher than my sales, and I finally sat down with a spreadsheet."
+ },
+ {
+  "start": 279.37,
+  "end": 286.29,
+  "text": "I worked out the real cost of every piece, including my own time at a fair hourly rate."
+ },
+ {
+  "start": 286.64,
+  "end": 289.72,
+  "text": "Then I doubled most of my prices overnight."
+ },
+ {
+  "start": 290.07,
+  "end": 294.3,
+  "text": "I was so nervous, I was sure the customers would disappear."
+ },
+ {
+  "start": 294.65,
+  "end": 296.25,
+  "text": "They didn't."
+ },
+ {
+  "start": 296.6,
+  "end": 303.52,
+  "text": "A few people complained, but most of them said they had always thought the mugs were too cheap."
+ },
+ {
+  "start": 303.87,
+  "end": 314.25,
+  "text": "My advice to any maker is this: if you don't know your real cost, you are not running a business, you are running a very expensive hobby."
+ },
+ {
+  "start": 314.6,
+  "end": 316.91,
+  "text": "What about wholesale, selling to shops?"
+ },
+ {
+  "start": 317.26,
+  "end": 321.49,
+  "text": "Wholesale is tricky, because shops usually want half the retail price."
+ },
+ {
+  "start": 321.84,
+  "end": 327.22,
+  "text": "I only sell wholesale for simple pieces that I can make quickly in batches."
+ },
+ {
+  "start": 327.57,
+  "end": 334.11,
+  "text": "The special pieces, the big platters and vases, I keep for the studio shop and the markets."
+ },
+ {
+  "start": 334.46,
+  "end": 336.77,
+  "text": "Cash flow is the other thing."
+ },
+ {
+  "start": 337.12,
+  "end": 343.66,
+  "text": "Shops often pay sixty days after delivery, so you need savings or you will be in trouble."
+ },
+ {
+  "start": 344.01,
+  "end": 348.63,
+  "text": "Um, so, yeah, that's kind of, like, the money side, I guess."
+ },
+ {
+  "start": 351.98,
+  "end": 355.44,
+  "text": "Let's move to the last part of the conversation."
+ },
+ {
+  "start": 355.79,
+  "end": 361.56,
+  "text": "If someone listening wants to turn their craft into a business, where should they start?"
+ },
+ {
+  "start": 361.91,
+  "end": 364.99,
+  "text": "Start small and start before you feel ready."
+ },
+ {
+  "start": 365.34,
+  "end": 371.11,
+  "text": "You don't need a big studio, you need ten people who love what you make."
+ },
+ {
+  "start": 371.46,
+  "end": 376.46,
+  "text": "Talk to those ten people, ask what they would pay, and listen carefully."
+ },
+ {
+  "start": 376.81,
+  "end": 381.81,
+  "text": "And keep a little money aside, because one bad night can change everything."
+ },
+ {
+  "start": 382.16,
+  "end": 385.62,
+  "text": "I learned that the hard way with the flood."
+ },
+ {
+  "start": 385.97,
+  "end": 388.28,
+  "text": "What are you most proud of?"
+ },
+ {
+  "start": 388.63,
+  "end": 393.25,
+  "text": "I'm most proud that the studio feels like a home for people."
+ },
+ {
+  "start": 393.6,
+  "end": 400.52,
+  "text": "A retired teacher told me last month that our Thursday class is the best part of her week."
+ },
+ {
+  "start": 400.87,
+  "end": 405.1,
+  "text": "When I heard that, I honestly had tears in my eyes."
+ },
+ {
+  "start": 405.45,
+  "end": 408.91,
+  "text": "That means more to me than any sales number."
+ },
+ {
+  "start": 409.26,
+  "end": 411.18,
+  "text": "What's next for Lantern Clay?"
+ },
+ {
+  "start": 411.53,
+  "end": 416.15,
+  "text": "We are planning a second small studio in another neighbourhood next year."
+ },
+ {
+  "start": 416.5,
+  "end": 419.58,
+  "text": "Same idea, small classes, warm room, good clay."
+ },
+ {
+  "start": 419.93,
+  "end": 423.39,
+  "text": "Rana, thank you so much for sharing your story."
+ },
+ {
+  "start": 423.74,
+  "end": 426.82,
+  "text": "Thank you, this was a lot of fun."
+ },
+ {
+  "start": 427.17,
+  "end": 430.25,
+  "text": "And thanks to everyone listening to Small Rooms."
+ },
+ {
+  "start": 430.6,
+  "end": 434.83,
+  "text": "Remember, this episode is fictional, and so is everyone in it."
+ }
+]
